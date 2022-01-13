@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+{% block title %}Administração{% endblock %}
+{% block content %}
+    <div class="escolha_admin">
+        <button type="button" class="btn btn-dark" id="addItem"><a href="/addlocador" class="addItem">Adicionar Locador</a></button>
+        <button type="button" class="btn btn-dark" id="addItem"><a href="/sellocador" class="text-black" class="addItem">Deletar Locador</a></button>
+        <button type="button" class="btn btn-dark"><a href="/addlocal" class="addItem">Adicionar Local</a></button>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Deletar Locador{% endblock %}
+{% block content %}
+    <div class="container m-auto">
+        <h3 class="text-center my-4">Tem certeza que deseja reservar o local abaixo?</h3>
+        <div class="container">
+            <div class="card w-25 m-auto shadow">
+                <img src="https://media.hrs.com/media/image/01/99/b7/hotel-dummy.png" class="card-img-top" alt="Imagem da logo empresarial">
+                <form method="post" class="card-body">
+                    {% csrf_token %}
+                    <p class="card-title">{{ locador_delete.nome }}</p>
+                    <p class="card-text">País: {{ locador_delete.pais }}</p>
+                    <p class="card-text">Cidade: {{ locador_delete.cidade }}</p>
+                    <p class="card-text">Rua: {{ locador_delete.rua }}</p>
+                    <button type="submit" class="btn btn-dark">Confirmar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
