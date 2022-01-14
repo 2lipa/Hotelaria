@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 from . import views
 
@@ -11,5 +13,5 @@ urlpatterns = [
     path('dellocal/<int:id>/', views.delete_local, name='delete_local'),
     path('dellocador/<int:id>/', views.delete_locador, name='delete_locador'),
     path('sellocador/', views.select_locador, name='select_locador'),
-    path('rsvlocal/<int:id>/', views.reservar_local, name='reservar_local'),
+    path('rsvlocal/', views.reservar_local, name='reservar_local'),
 ]

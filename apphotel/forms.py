@@ -9,25 +9,14 @@ class ReservaForm(forms.ModelForm):
         model = Reserva
         fields = ['data_entrada', 'data_saida']
         widgets = {
-            "entrada": DateInput(),
-            "saida": DateInput()
+            "data_entrada": DateInput(),
+            "data_saida": DateInput()
         }
 
 class LocalForm(forms.ModelForm):
     class Meta:
         model = Local
         fields = ['locador','nome_local', 'propriedade', 'preco', 'nota_avaliacao', 'wifi', 'tv' , 'camas', 'descricao']
-        widgets = {
-            'locador': forms.TextInput(attrs={'class': 'form-control mb-2 mt-1'}),
-            'nome_local': forms.TextInput(attrs={'class': 'form-control mb-2 mt-1'}),
-            'propriedade': forms.TextInput(attrs={'class': 'form-control mb-2 mt-1'}),
-            'preco': forms.TextInput(attrs={'class': 'form-control mb-2 mt-1'}),
-            'nota_avaliacao': forms.TextInput(attrs={'class': 'form-control mb-2 mt-1'}),
-            'wifi': forms.TextInput(attrs={'class': 'form-control mb-2 mt-1'}),
-            'tv': forms.TextInput(attrs={'class': 'form-control mb-2 mt-1'}),
-            'camas': forms.TextInput(attrs={'class': 'form-control mb-2 mt-1'}),
-            'descricao': forms.TextInput(attrs={'class': 'form-control mb-3 mt-4'}),
-        }
 
 class LocadorForm(forms.ModelForm):
     class Meta:

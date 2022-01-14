@@ -8,39 +8,80 @@
 {% block content %}
 
 
+    <!--
+    <div class="col-12 filter-div">
+        <span>Filtrar por:</span>
+        <select name="filter" id="filter" class="form-control">
+            <option value="">Escolha uma opção...</option>
+            <option value="done">Tarefas concluídas</option>
+            <option value="doing">Tarefas a fazer</option>
+        </select>
+    </div>
+    -->
+
+    <!--
+    <div class="pagination">
+        <span class="step-links">
+            {% if tasks.has_previous %}
+                <a href="?page={{ tasks.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+            {% endif %}
+
+            {% if tasks.paginator.num_pages %}
+            <span class="current">
+                {{ tasks.number }} de {{ tasks.paginator.num_pages }}
+            </span>
+            {% endif %}
+
+            {% if tasks.has_next %}
+                <a href="?page={{ tasks.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+            {% endif %}
+        </span>
+    </div>
+    -->
+
     <div class="container-fluid">
+        <div class="input-group mb-3">
+            <form method="GET" id="search-form">
+                <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">Button</button>
+                </div>
+            </form>
+        </div>
+
         <div class="margem-base">
             <div class="d-flex flex-wrap flex-row justify-content-center">
-            {% for Local in lista_local %}
-                <div class="card w-25 mx-3 shadow">
-                    <img src="https://imagens-revista.vivadecora.com.br/uploads/2019/05/quarto-de-hotel-decorado-em-cores-neutras-com-amplas-janelas.jpg" class="card-img-top" alt="quarto">
-                    <div class="card-body">
-                        <h1><p class="card-text">{{ Local.nome_local }}</p></h1>
-                        <p class="card-text">{{ Local.locador.nome }}</p>
-                        <p class="card-text">{{ Local.locador.pais }}</p>
-                        <p class="card-text">{{ Local.locador.cidade }}</p>
-                        <p class="card-text">{{ Local.propriedade }}</p>
-                        <p class="card-text">{{ Local.preco }}</p>
-                        <p class="card-text">{{ Local.camas }}</p>
-                        <p class="card-text">{{ Local.wifi }}</p>
-                        <p class="card-text">{{ Local.tv }}</p>
-                        <p class="card-text">{{ Local.nota_avaliacao }}</p>
-                        <p class="card-text">{{ Local.descricao }}</p>
+                {% for Local in lista_local %}
+                    <div class="card w-25 mx-3 shadow">
+                        <img src="https://imagens-revista.vivadecora.com.br/uploads/2019/05/quarto-de-hotel-decorado-em-cores-neutras-com-amplas-janelas.jpg" class="card-img-top" alt="quarto">
+                        <div class="card-body">
+                            <h1><p class="card-text">{{ Local.nome_local }}</p></h1>
+                            <p class="card-text">{{ Local.locador.nome }}</p>
+                            <p class="card-text">{{ Local.locador.pais }}</p>
+                            <p class="card-text">{{ Local.locador.cidade }}</p>
+                            <p class="card-text">{{ Local.propriedade }}</p>
+                            <p class="card-text">{{ Local.preco }}</p>
+                            <p class="card-text">{{ Local.camas }}</p>
+                            <p class="card-text">{{ Local.wifi }}</p>
+                            <p class="card-text">{{ Local.tv }}</p>
+                            <p class="card-text">{{ Local.nota_avaliacao }}</p>
+                            <p class="card-text">{{ Local.descricao }}</p>
 
-                        <div class="d-flex justify-content-between align-items-center">
-                            <button class="btn btn-dark">Reservar</button>
-                            <a href="{% url 'apphotel:delete_local' Local.id %}" class="text-black">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                </svg>
-                            </a>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-dark"><a href="{% url 'apphotel:reservar_local' %}">Reservar</a></button>
+                                <a href="{% url 'apphotel:delete_local' Local.id %}" class="text-black">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
+
 
 
 

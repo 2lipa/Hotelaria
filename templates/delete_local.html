@@ -5,11 +5,11 @@
         <h3 class="text-center my-4">Tem certeza que deseja deletar o local abaixo?</h3>
         <div class="container">
             <div class="card w-25 m-auto shadow">
-                <img src="https://www.hplus.com.br/wp-content/uploads/2019/08/quarto-superior-solteiro-hotel-cullinan-hplus-em-brasilia-2.jpg" class="card-img-top" alt="Imagem de uma acomodação">
+                <img src="https://imagens-revista.vivadecora.com.br/uploads/2019/05/quarto-de-hotel-decorado-em-cores-neutras-com-amplas-janelas.jpg" class="card-img-top" alt="Imagem de uma acomodação">
                 <form method="post" class="card-body">
                     {% csrf_token %}
                     <p class="card-title">{{ local_delete.locador.nome }}</p>
-                    <p class="card-text">Tipo: {{ local_delete.pro }}</p>
+                    <p class="card-text">Tipo: {{ local_delete.propre }}</p>
                     <p class="card-text">Preço(diária): R${{ local_delete.preco }}</p>
                     <p class="card-text">Número de Camas: {{ local_delete.camas }}</p>
                     <p class="card-text">Qualidade do Wi-fi: {{ local_delete.wifi }}</p>

@@ -1,23 +1,38 @@
-import requests
-from django.db.models import QuerySet
-from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from datetime import date
 
-from .models import Local, Locador
-from .forms import LocadorForm, LocalForm
+from .models import Local, Locador, Reserva
+from .forms import LocadorForm, LocalForm, ReservaForm
 
 @login_required()
 def index(request):
     lista_local = Local.objects.all()
+
+    search = request.GET.get('search')
+
+    if search:
+
+        lista_local = Local.objects.filter(title_icontains=search)
+
+    else:
+        return render(request, 'home.html', {
+            'lista_local': lista_local
+        })
 
     return render(request, 'home.html', {
         'lista_local': lista_local
     })
 
 def reservar_local(request):
-    return redirect('apphotel:index')
+    form_reserva = ReservaForm(request.POST or None)
+
+    if form_reserva.is_valid():
+        form_reserva.save()
+        return redirect('apphotel:index')
+
+    return render(request, 'confirmar_reserva.html', {
+        'form_reserva': form_reserva
+    })
 
 def admin_edit(request):
     return render(request, 'administrador.html')

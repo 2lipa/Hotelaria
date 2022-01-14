@@ -1,20 +1,29 @@
 {% extends 'base.html' %}
-{% block title %}Deletar Locador{% endblock %}
+{% block title %}Confirmar Reserva{% endblock %}
 {% block content %}
-    <div class="container m-auto">
+<div class="container m-auto">
         <h3 class="text-center my-4">Tem certeza que deseja reservar o local abaixo?</h3>
         <div class="container">
             <div class="card w-25 m-auto shadow">
-                <img src="https://media.hrs.com/media/image/01/99/b7/hotel-dummy.png" class="card-img-top" alt="Imagem da logo empresarial">
+                <img src="https://imagens-revista.vivadecora.com.br/uploads/2019/05/quarto-de-hotel-decorado-em-cores-neutras-com-amplas-janelas.jpg" class="card-img-top" alt="Imagem de uma acomodação">
                 <form method="post" class="card-body">
                     {% csrf_token %}
-                    <p class="card-title">{{ locador_delete.nome }}</p>
-                    <p class="card-text">País: {{ locador_delete.pais }}</p>
-                    <p class="card-text">Cidade: {{ locador_delete.cidade }}</p>
-                    <p class="card-text">Rua: {{ locador_delete.rua }}</p>
-                    <button type="submit" class="btn btn-dark">Confirmar</button>
+                    <p class="card-title">{{ form_reserva.nome }}</p>
+                    <p class="card-text">Tipo: {{ form_reserva.propre }}</p>
+                    <p class="card-text">Preço(diária): R${{ form_reserva.preco }}</p>
+                    <p class="card-text">Número de Camas: {{ form_reserva.camas }}</p>
+                    <p class="card-text">Qualidade do Wi-fi: {{ form_reserva.wifi }}</p>
                 </form>
             </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="shadow p-4 rounded-3 w-25 m-auto">
+            <form method="post" class="d-flex p-2 bd-highlight flex-column justify-content-center">
+                {% csrf_token %}
+                {{ form_reserva }}
+                <button type="submit" class="btn btn-dark my-2">Salvar</button>
+            </form>
         </div>
     </div>
 {% endblock %}
