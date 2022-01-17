@@ -6,7 +6,7 @@ class Locador(models.Model):
     nome = models.CharField(max_length=250, null=False, blank=False)
     pais = models.CharField(max_length=250, null=False, blank=False)
     cidade = models.CharField(max_length=250, null=False, blank=False)
-    rua = models.CharField(max_length=250, null=False, blank=False)
+    bairro = models.CharField(max_length=250, null=False, blank=False)
 
     def __str__(self):
         return self.nome
